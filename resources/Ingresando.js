@@ -11,6 +11,8 @@ var outputRest = document.getElementById("demoRest");// mostrara el numero de re
 var FuncionZ = document.getElementById("FuncionZ");//div donde ira la funcion Z generada
 var Restricciones = document.getElementById("Restricciones"); //div donde iran las restricciones
 
+var Switch = document.getElementById("switchTipo");
+
 
 //material desing use it later (already used it, its dope af)
 
@@ -148,3 +150,19 @@ sliderRest.oninput = function(){
 
   }
 };
+
+Switch.oninput = function(){
+
+  switchSet();
+
+}
+
+function switchSet(){
+
+document.getElementById("MaxMin");
+if(Switch.checked)
+MaxMin.innerHTML = "Maximizar";
+else
+MaxMin.innerHTML = "Minimizar"; 
+
+}

@@ -1,17 +1,67 @@
 
-//captura los datos en forma de arreglos string
+//captura los datos en forma de arreglos string y los muestra
+
+var solucion = document.getElementById("Solucion");
 
 function getSolve(){
 
 	var input = {
-    type: "maximize",
+    type: CapturarTipo(),
     objective : CapturarZ(),
     constraints : CapturarRest()
 };
 
 var output = YASMIJ.solve( input );
-console.dir(output);
 
+//var answer = JSON.parse(output);
+console.log(Object.getOwnPropertyNames(output.result));
+
+//var arreglo = output.split(":");
+
+var resultado = output.result;
+var xSoluciones = [];
+var Z;
+
+Object.keys(resultado).forEach(function(key) { //hacemos un recorrido por cada atributo de resultado
+
+	if(key.startsWith('x'))xSoluciones.push(resultado[key]);  //si el atributo empieza con x, es una x xd
+	if(key.startsWith('z'))Z = resultado[key];
+
+  console.log(key, resultado[key]);
+
+});
+
+//console.log(output.result.z); // asi podemos manejar los objetos
+
+var strSolucion = '<span><strong>Valores para X: </strong></span>';
+
+  for(var i = 0; i < NumVariables; i++){
+
+
+
+  	strSolucion += '<span>X<sub>'+(i+1)+'</sub> = '+xSoluciones[i]+', </span>'
+              
+
+    
+  }
+
+solucion.innerHTML = '<div><strong><h5>Solucion Optima:</h5></strong></div>' + strSolucion 
+					+ "<div><strong>Valor de Z: </strong>" + Z + "</div>";
+
+
+
+}
+
+function CapturarTipo(){
+
+var tipo;
+
+if(Switch.checked)
+tipo = "maximize";
+else
+tipo = "minimize";
+
+return tipo;
 
 }
 
@@ -45,7 +95,7 @@ strFuncionZ += signo + numero + 'x' + (i+1) + " ";
 
 }
 
-console.log(strFuncionZ);
+//console.log(strFuncionZ);
 return(strFuncionZ);
 
 }
@@ -88,7 +138,7 @@ function CapturarRest(){
 
 	}
 
-	console.log(strRest);
+	//console.log(strRest);
 	return(strRest);
 
 }

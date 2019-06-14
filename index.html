@@ -64,7 +64,7 @@
     </style>
 
   </head>
-  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" onload="switchSet()">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
@@ -96,12 +96,19 @@
                 Elija el numero de variables que desea, moviendo los sliders.
                 Cuando haya llenado todos los campos, de click al boton "ingresar" al pie de este dialogo
                 <hr>
+
               <div class="slidecontainer">
               <input class="mdl-slider mdl-js-slider" type="range" min="1" max="10" value="5" id="RangoZ">
               <p class="help-block" id="demoZ">Variables en funcion Z : </p>                  
               <input type="range" min="1" max="10" value="5" class="mdl-slider mdl-js-slider" id="RangoRest">
               <p class="help-block" id="demoRest">Numero de restricciones : </p>
               </div>
+           
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switchTipo">
+                <input type="checkbox" id="switchTipo" class="mdl-switch__input" checked="">
+                <span id="MaxMin" class="mdl-switch__label">Maximizar</span>
+                </label>
+
 
               <div id="FuncionZ">
 
@@ -113,15 +120,14 @@
 
               </div>
 
-
-              </div>
-
+              <div id="Solucion">
               
 
-
-              <div class="mdl-card__actions">
-                <a href="#" class="mdl-button">Ingresar!</a>
               </div>
+
+
+              </div>
+
             </div>
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn1">
               <i class="material-icons">more_vert</i>
@@ -210,7 +216,7 @@
         </footer>
       </main>
     </div>
-    <a target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--teal mdl-color-text--teal-contrast" onclick="getSolve()">View Source</a>
+    <a href="#Solucion" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--teal mdl-color-text--teal-contrast" onclick="getSolve()">Resolver!</a>
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
   </body>
 </html>
